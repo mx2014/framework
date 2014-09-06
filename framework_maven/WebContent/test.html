@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+</head>
+<body>
+	<a href="index2?user_name=zxc&iphone_type=1&login_ip=lkj&mac_adress=poi"> simple</a><button onclick="simple()">simple</button><br/>  
+	<a href="simple1?name=text&age=28"> simple1</a><button onclick="simple1()">simple1</button><br/>  <button onclick="simple2()">simple2</button><br/>  
+	<script type="text/javascript">  
+	function simple(){  
+	  $.getJSON("test",{"name":"nameJsonTest","age":"100"},  
+	    function(a, b){
+		  
+	  });  
+	}    
+	function simple1(){    
+	  $.getJSON("test1",  
+	    {"name":"nameJsonTest","age":"100","phone":"120", "email":"yual@ds.ds","123":"567","namea":"2444"},  
+	    function(){
+	    	
+	    });  
+	}
+	function simple2(){    
+		  $.getJSON("test2.do",  
+		    {"userName":"nameJsonTest","pwd":"100","phone":"120"},  
+		    function(){});  
+		}
+	
+	</script>
+
+</body>
+</html>
