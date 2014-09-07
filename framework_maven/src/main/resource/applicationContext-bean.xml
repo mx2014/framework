@@ -15,7 +15,14 @@
 	  http://www.springframework.org/schema/util
 	 http://www.springframework.org/schema/util/spring-util-4.0.xsd
 	 ">
-	
+	<bean class="com.mx.util.Configure">
+		<property name="entityPath" value="com.mx.entity"></property>
+		<property name="actionList" >
+       		<list>
+       			<value>insert</value>
+       		</list>
+       	</property>
+	</bean>
 	
 	
 </beans>

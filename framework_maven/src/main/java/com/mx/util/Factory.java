@@ -1,20 +1,28 @@
 package com.mx.util;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Repository
 public class Factory {
-	static Factory factory;
-	static{
-		factory = new Factory();
-	}
-	
-	public static Factory getInstance(){
-		return factory;
-	}
+
+	@Autowired
+	private Configure configure;
+	@Autowired
+	private ObjectMapper objectMapper;
 	
 	public String getMD5(String content){
 		MessageDigest messageDigest = null;  
@@ -48,5 +56,24 @@ public class Factory {
 	public String getUrlBySort(HttpServletRequest request){
 		Parameter p = new Parameter(request);
 		return p.sort();
+	}
+	
+	public Object installParams(HttpServletRequest request) throws Exception{
+		String context = "";
+		String entity = request.getParameter("entity");
+		Class<?> object = Class.forName(configure.getEntityPath() + "." + entity);
+		Field[] f = object.getDeclaredFields();
+		
+		for (Field field : f) {
+			String name = field.getName();
+			String value = request.getParameter(name);
+			if (value != null) {
+				context += "\"" + name + "\"" + ":" + "\"" + value + "\",";
+			}
+		}
+		context = context.substring(0, context.length()-1);
+		String json = "{" + context + "}";
+		return objectMapper.readValue(json, object);
+		
 	}
 }

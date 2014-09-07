@@ -14,5 +14,15 @@ public class SqlUtil {
 		this.properties = properties;
 	}
 	
+	public String getSentence(String key, String where){
+		String sql = properties.getProperty(key);
+		if (where != null) {
+			String[] w = where.split(",");
+			for (int i = 0 ; i < w.length; i++) {
+				sql = sql.replaceFirst("[?]", w[i]);
+			}
+		}
+		return sql;
+	}
 	
 }

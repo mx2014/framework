@@ -18,7 +18,9 @@ import com.mx.util.Factory;
 public class TestController{
 
 	@Autowired
-	TestService testService;
+	private TestService testService;
+	@Autowired
+	private Factory factory;
 	
 	@RequestMapping(value="/test2.do", method=RequestMethod.GET)
 	public String getList(@RequestParam String userName, @RequestParam int pwd, @RequestParam int phone){
@@ -31,8 +33,8 @@ public class TestController{
 	
 	@RequestMapping(value="/test1", method=RequestMethod.GET)
 	public String test(Test user, HttpServletRequest request){
-		String url = Factory.getInstance().getUrlBySort(request);
-		String md5 = Factory.getInstance().getMD5(url);
+		String url = factory.getUrlBySort(request);
+		String md5 = factory.getMD5(url);
 		System.out.println("----"+md5);
 		testService.save(user);
 		return "{\"id\" : 1111}";

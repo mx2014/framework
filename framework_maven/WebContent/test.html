@@ -7,7 +7,10 @@
 </head>
 <body>
 	<a href="index2?user_name=zxc&iphone_type=1&login_ip=lkj&mac_adress=poi"> simple</a><button onclick="simple()">simple</button><br/>  
-	<a href="simple1?name=text&age=28"> simple1</a><button onclick="simple1()">simple1</button><br/>  <button onclick="simple2()">simple2</button><br/>  
+	<a href="simple1?name=text&age=28"> simple1</a><button onclick="simple1()">simple1</button><br/>  
+	<span>select sql</span><button onclick="simple2()">select sql</button><br/>
+	<span>insert sql</span><button onclick="simple3()">insert sql</button><br/>
+	<span>delete sql</span><button onclick="simple4()">delete sql</button><br/>  
 	<script type="text/javascript">  
 	function simple(){  
 	  $.getJSON("test",{"name":"nameJsonTest","age":"100"},  
@@ -23,9 +26,25 @@
 	    });  
 	}
 	function simple2(){    
-		  $.getJSON("test2.do",  
-		    {"userName":"nameJsonTest","pwd":"100","phone":"120"},  
-		    function(){});  
+		  $.getJSON("execute/selectHql",  
+		    {"action":"select","sql":"SQL_2","value":"1,nameJsonTest"},  
+		    function(a, b){
+		    	
+		    });  
+		}
+	function simple3(){    
+		  $.getJSON("execute/save",  
+		    {"action":"insert", "entity":"Test", "age":"123", "name":"guanrl", "phone":"138162"},  
+		    function(a, b){
+		    	
+		    });  
+		}
+	function simple4(){    
+		  $.getJSON("selectHql",  
+		    {"sql":"SQL_2","where":"1,nameJsonTest"},  
+		    function(a, b){
+		    	
+		    });  
 		}
 	
 	</script>

@@ -26,9 +26,9 @@ public class Test implements Serializable{
 	@Column(name = "name", length = 45)
 	private String name;
 	@Column(name = "age")
-	private int age;
+	private Integer age;
 	@Column(name = "phone")
-	private int phone;
+	private Integer phone;
 	public String getName() {
 		return name;
 	}
@@ -38,13 +38,13 @@ public class Test implements Serializable{
 	public int getAge() {
 		return age;
 	}
-	public void setAge(int age) {
+	public void setAge(Integer age) {
 		this.age = age;
 	}
 	public int getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(Integer phone) {
 		this.phone = phone;
 	}
 	

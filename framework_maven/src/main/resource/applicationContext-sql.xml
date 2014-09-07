@@ -18,8 +18,9 @@
 	<bean class="com.mx.util.SqlUtil" id="sqlUtil" >
 		<property name="properties" >
 			<props>
-				<prop key="SQL_1">select * from test where id = ?</prop>
-				<prop key="SQL_1">select * from test where id = ?</prop>
+				<prop key="SQL_1">from Test</prop> 
+				<prop key="SQL_2">from Test where id = ? and name = '?'</prop>
+				<prop key="SQL_3">insert into Test(id, age, name, phone) values (300, ?, '?', ?)</prop>
 			</props>
 		</property>
 	</bean>
