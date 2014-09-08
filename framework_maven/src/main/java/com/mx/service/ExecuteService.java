@@ -23,7 +23,7 @@ public class ExecuteService {
 		return executeDao.selectHql(sql);
 	}
 	@Transactional
-	public int save(String entity, Object o){
+	public Object save(String entity, Object o){
 		return executeDao.save(entity, o);
 	}
 }

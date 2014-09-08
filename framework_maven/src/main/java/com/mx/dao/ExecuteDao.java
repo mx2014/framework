@@ -19,7 +19,6 @@ public class ExecuteDao extends BaseDaoImpl {
 		    @Override  
 		    public List<Object[]> doInHibernate(Session session)  throws HibernateException {  
 		        SQLQuery query = session.createSQLQuery(sql);
-//		        query.add
 		        List<Object[]> results = query.list();
 		        return results;  
 		    }  
@@ -30,26 +29,14 @@ public class ExecuteDao extends BaseDaoImpl {
 		return list;
 	}
 	
-	public int save(final String entity, final Object o){
-//		HibernateTemplate tmpl = getHibernateTemplate();  
-//		return tmpl.execute(new HibernateCallback<Integer>() {
-//		    @Override  
-//		    public Integer doInHibernate(Session session)  throws HibernateException {  
-//		        
-//		        return session.createQuery(sql).executeUpdate();
-//		    }  
-//		});
-//		getHibernateTemplate().save(entity, o);
-		getHibernateTemplate().execute(
+	public Object save(final String entity, final Object o){
+		return getHibernateTemplate().execute(
 			new HibernateCallback<Object>() {
 				public Object doInHibernate(org.hibernate.Session session)
 						throws org.hibernate.HibernateException {
-					System.out.println("entity:"+entity);
-					session.save(entity, o);
-					return null;
+					return session.save(entity, o);
 				}
 			}
 		);
-		return 1;
 	}
 }

@@ -24,13 +24,13 @@
     
     <!-- 拦截指定url -->
     <mvc:interceptors >    
-	  	<mvc:interceptor>    
-	        <mvc:mapping path="/user/*" /> <!-- /user/*  -->    
+	  	<!-- <mvc:interceptor>    
+	        <mvc:mapping path="/user/*" /> /user/*     
 	        <bean class="com.mx.inteceptor.TestInteceptor"></bean>    
-	    </mvc:interceptor>
+	    </mvc:interceptor> -->
 	    
 	    <mvc:interceptor>
-	        <mvc:mapping path="/execute/*"/>
+	        <mvc:mapping path="/user/execute/*"/>
 	        <bean class="com.mx.inteceptor.ExecuteInteceptor"></bean>    
 	    </mvc:interceptor>
 	</mvc:interceptors>

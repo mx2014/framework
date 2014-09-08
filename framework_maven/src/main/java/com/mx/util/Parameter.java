@@ -7,13 +7,16 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class Parameter {
 
 	private Enumeration<String> params;
 	private HttpServletRequest request;
 //	private List<String> sortlist = new ArrayList<String>();
 	
-	public Parameter(HttpServletRequest request){
+	public void setRequest(HttpServletRequest request){
 		this.request = request;
 		this.params = request.getParameterNames();
 	}

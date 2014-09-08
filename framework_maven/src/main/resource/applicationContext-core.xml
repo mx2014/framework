@@ -24,7 +24,7 @@
 			<props>
 				<prop key="hibernate.dialect">${dataSource.dialect}</prop>
 				<prop key="hibernate.hbm2ddl.auto">${dataSource.hbm2ddl.auto}</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.show_sql">${dataSource.sql.show}</prop>
 			</props>
 		</property>
 		<property name="packagesToScan">
